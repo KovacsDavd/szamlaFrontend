@@ -1,0 +1,12 @@
+<h2 class="dialog-title">Szerepkörök módosítása</h2>
+
+<mat-selection-list [(ngModel)]="selectedRoles" class="role-list">
+    <mat-list-option *ngFor="let role of roles" [value]="role" class="role-item">
+        {{ role }}
+    </mat-list-option>
+</mat-selection-list>
+
+<div class="dialog-actions">
+    <button mat-button (click)="onCancel()">Mégse</button>
+    <button mat-button (click)="onSave()" color="primary">Mentés</button>
+</div>

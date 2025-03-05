@@ -1,0 +1,46 @@
+<div class="login-container">
+  <mat-card *ngIf="!isLoggedIn">
+    <mat-card-header>
+      <mat-card-title>Bejelentkezés</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+        <mat-form-field appearance="fill">
+          <mat-label>Felhasználónév</mat-label>
+          <input matInput formControlName="username" required>
+          <mat-error *ngIf="loginForm.get('username')?.hasError('required')">
+            <mat-icon class="error-icon">error</mat-icon>
+            A felhasználónév kötelező
+          </mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="fill">
+          <mat-label>Jelszó</mat-label>
+          <input matInput formControlName="password" type="password" required>
+          <mat-error *ngIf="loginForm.get('password')?.hasError('required')">
+            <mat-icon class="error-icon">error</mat-icon>
+            A jelszó kötelező
+          </mat-error>
+          <mat-error *ngIf="loginForm.get('password')?.hasError('minlength')">
+            <mat-icon class="error-icon">error</mat-icon>
+            A jelszónak legalább 5 karakter hosszúnak kell lennie
+          </mat-error>
+        </mat-form-field>
+
+        <button mat-raised-button color="primary" type="submit" [disabled]="loginForm.invalid">
+          Bejelentkezés
+        </button>
+      </form>
+      <div *ngIf="errorMessage" class="error-message">
+        <mat-icon class="error-icon">error</mat-icon>
+        {{ errorMessage }}
+      </div>
+    </mat-card-content>
+  </mat-card>
+
+  <mat-card *ngIf="isLoggedIn">
+    <mat-card-header>
+      <mat-card-title>Már be vagy jelentkezve</mat-card-title>
+    </mat-card-header>
+  </mat-card>
+</div>

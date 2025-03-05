@@ -1,0 +1,28 @@
+<div class="invoice-list-container">
+  <h2>Számlák listája</h2>
+  <button mat-raised-button color="primary" (click)="navigateToCreate()">Create</button>
+  <table class="invoice-table">
+    <thead>
+      <tr>
+        <th>Ügyfél neve</th>
+        <th>Komment</th>
+        <th>Tétel neve</th>
+        <th>Összeg</th>
+        <th>Kibocsátás dátuma</th>
+        <th>Fizetési határidő</th>
+      </tr>
+    </thead>
+    <tbody>
+      @for (invoice of invoices; track invoice.id) {
+      <tr (click)="navigateToDetail(invoice.id)">
+        <td>{{ invoice.customerName }}</td>
+        <td>{{ invoice.comment }}</td>
+        <td>{{ invoice.itemName }}</td>
+        <td>{{ invoice.price }} Ft</td>
+        <td>{{ invoice.issueDate }}</td>
+        <td>{{ invoice.deadlineDate }}</td>
+      </tr>
+      }
+    </tbody>
+  </table>
+</div>

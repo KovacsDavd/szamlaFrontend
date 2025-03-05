@@ -1,0 +1,14 @@
+<div class="invoice-detail-container" *ngIf="invoice">
+    <h2>Számla részletei</h2>
+    <div>
+    
+      <p><strong>Ügyfél neve:</strong> {{ invoice!.customerName }}</p>
+      <p><strong>Komment: </strong> {{ invoice!.comment }}</p>
+      <p><strong>Összeg:</strong> {{ invoice!.price }}</p>
+      <p><strong>Tétel neve:</strong> {{ invoice!.itemName }}</p>
+      <p><strong>Összeg:</strong> {{ invoice!.price }}</p>
+      <p><strong>Kibocsátás dátuma:</strong> {{ invoice!.issueDate }}</p>
+      <p><strong>Fizetési határidő:</strong> {{ invoice!.deadlineDate }}</p>
+    </div>
+    <button mat-raised-button color="primary" (click)="navigateBack()">Vissza</button>
+  </div>
